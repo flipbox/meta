@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import "../../../../../../../craftcms/cms/src/web/assets/shared";
+
+/* ----------------------------------------
+/* Meta
+/* ----------------------------------------*/
+
+/* config */
+.meta-configuration > .field {
+  max-width: none;
+}
+
+.meta-configuration > .field > .input {
+  position: relative;
+  @include padding-left(200px);
+  overflow: hidden;
+  border: 1px solid #e3e5e8;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+  -moz-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+  box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+  -webkit-transition: -webkit-box-shadow linear 100ms;
+  -moz-transition: box-shadow linear 100ms;
+}
+
+.meta-configuration .mc-sidebar {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  border: none;
+  width: 200px;
+  height: 100%;
+  background: hsla($hue, 8%, 0%, 0.03);
+  @include box-shadow(inset -1px 0 0 rgba(0, 0, 0, 0.06));
+
+}
+
+//.meta-configuration .mc-sidebar.block-types {
+//  @include left(0);
+//}
+
+.meta-configuration .mc-sidebar.fields {
+  @include left(0);
+}
+
+.meta-configuration .mc-sidebar .items {
+  margin-top: -1px;
+  padding-top: 1px;
+}
+
+.metaconfigitem {
+  position: relative;
+  margin-top: -1px;
+  @include padding(11px, 45px, 10px, 14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  @include user-select(none);
+  cursor: default;
+}
+
+.metaconfigitem.sel {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.metaconfigitem.error {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.metaconfigitem.sel.error {
+  background: rgba(200, 0, 0, 0.2);
+}
+
+.metaconfigitem .handle {
+  font-size: 11px;
+  color: $mediumtextcolor;
+}
+
+.metaconfigitem .actions {
+  position: absolute;
+  @include right(0);
+  width: 24px;
+}
+
+.metaconfigitem.mci-blocktype .actions {
+  top: 10px;
+}
+
+.metaconfigitem.mci-field .actions {
+  top: 20px;
+}
+
+.metaconfigitem .actions .icon {
+  display: block;
+  margin-bottom: 1px;
+  text-align: center;
+}
+
+.metaconfigitem .actions .icon.settings:before {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.metaconfigitem .actions .icon.settings.error:before {
+  color: $errorcolor;
+}
+
+.metaconfigitem .actions .icon.settings:not(.disabled):hover:before {
+  color: $linkcolor;
+}
+
+.meta-configuration .mc-sidebar .items .btn {
+  margin: 14px;
+}
+
+.meta-configuration .field-settings {
+  position: relative;
+  height: 100%;
+}
+
+.meta-configuration .field-settings .items {
+  padding: 24px;
+}
+
+.meta-configuration .mc-sidebar > .col-inner-container > .heading,
+.meta-configuration .field-settings > .col-inner-container > .heading {
+  margin: 0;
+  padding: 7px 14px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  @include linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.03));
+}

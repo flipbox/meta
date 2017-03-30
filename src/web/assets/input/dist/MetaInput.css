@@ -1,0 +1,184 @@
+/* Flexbox stuff */
+/* Other */
+/* RTL stuff */
+/* ----------------------------------------
+/* Meta
+/* ----------------------------------------*/
+.meta > .elements > .element {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0 14px 14px;
+    border-radius: 4px;
+    border: 1px solid #e3e5e8;
+    background: #fafafa;
+    outline: none;
+}
+
+.meta > .elements > .element.disabled {
+    opacity: 1;
+}
+
+.meta > .elements > .element > .titlebar {
+    margin: 0 -14px 14px;
+    width: calc(100% + 28px);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 2px 2px 0 0;
+    border-bottom: 1px solid #e3e5e8;
+    background: #eef0f1;
+    color: #b9bfc6;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+body.ltr .meta > .elements > .element > .titlebar {
+    padding: 6px 70px 6px 33px;
+}
+
+body.rtl .meta > .elements > .element > .titlebar {
+    padding: 6px 33px 6px 70px;
+}
+
+.meta > .elements > .element.collapsed > .titlebar {
+    border-radius: 2px;
+    border-bottom: none;
+}
+
+body.ltr .meta > .elements > .element.disabled > .titlebar {
+    padding-right: 90px;
+}
+
+body.rtl .meta > .elements > .element.disabled > .titlebar {
+    padding-left: 90px;
+}
+
+.meta > .elements > .element > .titlebar > .blocktype {
+    display: inline;
+    color: #8f98a3;
+}
+
+.meta > .elements > .element > .titlebar > .preview {
+    display: inline;
+    opacity: 0;
+    -webkit-transition: opacity linear 100ms;
+    -moz-transition: opacity linear 100ms;
+    -ms-transition: opacity linear 100ms;
+    transition: opacity linear 100ms;
+}
+
+body.ltr .meta > .elements > .element > .titlebar > .preview {
+    margin-left: 7px;
+}
+
+body.rtl .meta > .elements > .element > .titlebar > .preview {
+    margin-right: 7px;
+}
+
+.meta > .elements > .element.collapsed > .titlebar > .preview {
+    opacity: 1;
+}
+
+.meta > .elements > .element > .titlebar > .preview span {
+    opacity: 0.5;
+}
+
+.meta > .elements > .element > .checkbox {
+    position: absolute;
+    top: 7px;
+}
+
+body.ltr .meta > .elements > .element > .checkbox {
+    left: 14px;
+}
+
+body.rtl .meta > .elements > .element > .checkbox {
+    right: 14px;
+}
+
+.meta > .elements > .element > .actions > .status.off {
+    display: none;
+}
+
+.meta > .elements > .element.disabled > .actions > .status.off {
+    display: inline-block;
+}
+
+body.ltr .meta > .elements > .element.disabled > .actions > .status.off {
+    float: left;
+}
+
+body.rtl .meta > .elements > .element.disabled > .actions > .status.off {
+    float: right;
+}
+
+body.ltr .meta > .elements > .element.disabled > .actions > .status.off {
+    margin: 4px 10px 0 0;
+}
+
+body.rtl .meta > .elements > .element.disabled > .actions > .status.off {
+    margin: 4px 0 0 10px;
+}
+
+.meta > .elements > .element > .actions {
+    position: absolute;
+    z-index: 1;
+    top: 6px;
+    cursor: default;
+}
+
+body.ltr .meta > .elements > .element > .actions {
+    right: 5px;
+}
+
+body.rtl .meta > .elements > .element > .actions {
+    left: 5px;
+}
+
+.meta > .elements > .element > .actions a {
+    padding: 0;
+    width: 15px;
+    height: 20px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+body.ltr .meta > .elements > .element > .actions a {
+    margin-right: 2px;
+}
+
+body.rtl .meta > .elements > .element > .actions a {
+    margin-left: 2px;
+}
+
+.meta > .elements > .element > .actions a:hover {
+    width: 15px;
+    height: 20px;
+    text-align: center;
+    color: #0d78f2;
+}
+
+body.ltr .meta > .elements > .element > .actions a.settings:after {
+    margin-left: 3px;
+}
+
+body.rtl .meta > .elements > .element > .actions a.settings:after {
+    margin-right: 3px;
+}
+
+.meta > .elements > .element > .fields > .field {
+    margin: 15px 0;
+}
+
+.meta > .buttons {
+    margin-top: 0;
+    height: 30px;
+}
+
+/*# sourceMappingURL=MetaInput.css.map */

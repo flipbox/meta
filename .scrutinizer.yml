@@ -1,0 +1,12 @@
+checks:
+    php:
+        excluded_dependencies:
+            - flipboxdigital/spark
+build:
+  environment:
+    timezone: UTC
+    php:
+      version: 7.1
+      ini:
+        date.timezone: 'UTC'
+        memory_limit: '-1'

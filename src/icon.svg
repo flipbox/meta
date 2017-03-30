@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="99px" viewBox="0 0 100 99" version="1.1" xmlns="http://www.w3.org/2000/svg"
+>
+    <title>Meta</title>
+    <desc>Meta Plugin for Craft CMS</desc>
+    <defs></defs>
+    <g id="Meta" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon">
+            <g id="Path" transform="translate(39.625000, 21.000000)" fill-rule="nonzero">
+                <rect id="Rectangle-path" fill="#526479" x="5.20833333" y="0.5" width="10" height="69"></rect>
+                <polygon id="Shape" fill="#3F5269" points="15.2083333 14.19 15.2083333 11.5 5.20833333 11.5"></polygon>
+                <polygon id="Shape" fill="#3F5269" points="5.20833333 49.5 15.2083333 52.19 15.2083333 49.5"></polygon>
+                <circle id="Oval" fill="#202832" cx="10" cy="68" r="10"></circle>
+            </g>
+            <g id="Block">
+                <rect id="Rectangle-path" fill="#333F4D" fill-rule="nonzero" x="0" y="0.5" width="100"
+                      height="32"></rect>
+                <path d="M87.5208333,16.5 L12.4837302,16.5" id="Shape" stroke="#DA5A47" stroke-width="8"></path>
+            </g>
+            <g id="Block" transform="translate(0.000000, 38.000000)">
+                <rect id="Rectangle-path" fill="#333F4D" fill-rule="nonzero" x="0" y="0.5" width="100"
+                      height="32"></rect>
+                <path d="M87.5208333,16.5 L12.5,16.5" id="Shape" stroke="#DA5A47" stroke-width="8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

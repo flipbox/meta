@@ -1,0 +1,57 @@
+{
+	"name": "flipboxdigital/meta",
+	"description": "A simple, repeatable field type",
+	"version": "1.0.0",
+	"type": "craft-plugin",
+	"keywords": [
+		"flipbox",
+		"meta",
+		"craftcms",
+		"yii2"
+	],
+	"license": "MIT",
+	"authors": [{
+		"name": "Flipbox Factory",
+		"email": "hello@flipboxdigital.com"
+	}],
+	"support": {
+		"email": "support@flipboxfactory.com",
+		"issues": "https://github.com/flipbox/meta/issues?state=open",
+		"source": "https://github.com/flipbox/meta",
+		"docs": "https://github.com/flipbox/meta",
+		"rss": "https://github.com/flipbox/meta/commits/master.atom"
+	},
+	"require": {
+		"craftcms/cms": "~3.0.0-beta.9",
+		"flipboxdigital/spark": "^1.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*",
+		"mockery/mockery": "0.7.2",
+		"squizlabs/php_codesniffer": "1.*"
+	},
+	"repositories": [{
+		"type": "composer",
+		"url": "https://asset-packagist.org"
+	}],
+	"autoload": {
+		"psr-4": {
+			"flipbox\\meta\\": "src/"
+		}
+	},
+	"extra": {
+		"name": "Meta",
+		"handle": "meta",
+		"class": "flipbox\\meta\\Plugin",
+		"changelogUrl": "https://raw.githubusercontent.com/flipbox/meta/master/CHANGELOG.md",
+		"downloadUrl": "https://github.com/flipbox/meta/archive/master.zip",
+		"hasCpSettings": false,
+		"hasCpSection": false,
+		"schemaVersion": "1.0.0",
+		"components": {
+			"meta": "flipbox\\meta\\services\\Meta",
+			"field": "flipbox\\meta\\services\\Field",
+			"configuration": "flipbox\\meta\\services\\Configuration"
+		}
+	}
+}

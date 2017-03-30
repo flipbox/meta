@@ -1,0 +1,157 @@
+/* Flexbox stuff */
+/* Other */
+/* RTL stuff */
+/* ----------------------------------------
+/* Meta
+/* ----------------------------------------*/
+/* config */
+.meta-configuration > .field {
+    max-width: none;
+}
+
+.meta-configuration > .field > .input {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e3e5e8;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+    -moz-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+    box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+    -webkit-transition: -webkit-box-shadow linear 100ms;
+    -moz-transition: box-shadow linear 100ms;
+}
+
+body.ltr .meta-configuration > .field > .input {
+    padding-left: 200px;
+}
+
+body.rtl .meta-configuration > .field > .input {
+    padding-right: 200px;
+}
+
+.meta-configuration .mc-sidebar {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    border: none;
+    width: 200px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.03);
+    -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.06);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.06);
+}
+
+body.ltr .meta-configuration .mc-sidebar.fields {
+    left: 0;
+}
+
+body.rtl .meta-configuration .mc-sidebar.fields {
+    right: 0;
+}
+
+.meta-configuration .mc-sidebar .items {
+    margin-top: -1px;
+    padding-top: 1px;
+}
+
+.metaconfigitem {
+    position: relative;
+    margin-top: -1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+body.ltr .metaconfigitem {
+    padding: 11px 45px 10px 14px;
+}
+
+body.rtl .metaconfigitem {
+    padding: 11px 14px 10px 45px;
+}
+
+.metaconfigitem.sel {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.metaconfigitem.error {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.metaconfigitem.sel.error {
+    background: rgba(200, 0, 0, 0.2);
+}
+
+.metaconfigitem .handle {
+    font-size: 11px;
+    color: #8f98a3;
+}
+
+.metaconfigitem .actions {
+    position: absolute;
+    width: 24px;
+}
+
+body.ltr .metaconfigitem .actions {
+    right: 0;
+}
+
+body.rtl .metaconfigitem .actions {
+    left: 0;
+}
+
+.metaconfigitem.mci-blocktype .actions {
+    top: 10px;
+}
+
+.metaconfigitem.mci-field .actions {
+    top: 20px;
+}
+
+.metaconfigitem .actions .icon {
+    display: block;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.metaconfigitem .actions .icon.settings:before {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.metaconfigitem .actions .icon.settings.error:before {
+    color: #da5a47;
+}
+
+.metaconfigitem .actions .icon.settings:not(.disabled):hover:before {
+    color: #0d78f2;
+}
+
+.meta-configuration .mc-sidebar .items .btn {
+    margin: 14px;
+}
+
+.meta-configuration .field-settings {
+    position: relative;
+    height: 100%;
+}
+
+.meta-configuration .field-settings .items {
+    padding: 24px;
+}
+
+.meta-configuration .mc-sidebar > .col-inner-container > .heading,
+.meta-configuration .field-settings > .col-inner-container > .heading {
+    margin: 0;
+    padding: 7px 14px 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+    background-image: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+    background-image: -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+    background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.03));
+}
+
+/*# sourceMappingURL=MetaConfiguration.css.map */

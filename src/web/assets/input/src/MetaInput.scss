@@ -1,0 +1,130 @@
+@charset "UTF-8";
+@import "../../../../../../../craftcms/cms/src/web/assets/shared";
+
+/* ----------------------------------------
+/* Meta
+/* ----------------------------------------*/
+.meta {
+
+  > .elements {
+
+    > .element {
+      position: relative;
+      margin-bottom: 10px;
+      padding: 0 14px 14px;
+      border-radius: $paneBorderRadius;
+      border: 1px solid $hairlineColor;
+      background: $lightBgColor;
+      outline: none;
+
+      &.disabled {
+        opacity: 1;
+      }
+
+      > .titlebar {
+        margin: 0 -14px 14px;
+        width: calc(100% + 28px);
+        @include box-sizing(border-box);
+        border-radius: 2px 2px 0 0;
+        @include padding(6px, 70px, 6px, 33px);
+        border-bottom: 1px solid $hairlineColor;
+        background: hsl(212, 10%, 94%);
+        color: $lighttextcolor;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-wrap: normal;
+        cursor: default;
+        @include user-select(none);
+      }
+
+      &.collapsed > .titlebar {
+        border-radius: 2px;
+        border-bottom: none;
+
+      }
+
+      &.disabled > .titlebar {
+        @include padding-right(90px);
+      }
+
+      > .titlebar > .blocktype {
+        display: inline;
+        color: $mediumtextcolor;
+      }
+
+      > .titlebar > .preview {
+        @include margin-left(7px);
+        display: inline;
+        opacity: 0;
+        @include transition(opacity linear 100ms);
+      }
+
+      &.collapsed > .titlebar > .preview {
+        opacity: 1;
+      }
+
+      > .titlebar > .preview span {
+        opacity: 0.5;
+      }
+
+      > .checkbox {
+        position: absolute;
+        top: 7px;
+        @include left(14px);
+      }
+
+      > .actions > .status.off {
+        display: none;
+      }
+
+      &.disabled > .actions > .status.off {
+        display: inline-block;
+        @include floatleft;
+        @include margin(4px, 10px, 0, 0);
+      }
+
+      > .actions {
+        position: absolute;
+        z-index: 1;
+        top: 6px;
+        @include right(5px);
+        cursor: default;
+      }
+
+      > .actions a {
+        padding: 0;
+        @include margin-right(2px);
+        width: 15px;
+        height: 20px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.25)
+      }
+
+      > .actions a:hover {
+        width: 15px;
+        height: 20px;
+        text-align: center;
+        color: $linkcolor;
+      }
+
+      > .actions a.settings:after {
+        @include margin-left(3px);
+      }
+
+      > .fields > .field {
+        margin: 15px 0;
+
+      }
+
+    }
+
+  }
+
+  > .buttons {
+    margin-top: 0;
+    height: 30px;
+
+  }
+
+}
