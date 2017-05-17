@@ -17,11 +17,9 @@ use flipbox\meta\elements\db\Meta as MetaQuery;
 use flipbox\meta\elements\Meta as MetaElement;
 use flipbox\meta\fields\Meta as MetaField;
 use flipbox\meta\helpers\Field as FieldHelper;
-use flipbox\meta\Plugin as MetaPlugin;
 use yii\base\Component;
 
 /**
- * @package flipbox\meta\services
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */
@@ -47,7 +45,7 @@ class Field extends Component
 
             /** @var MetaElement $meta */
             foreach ($query as $meta) {
-                MetaPlugin::getInstance()->getMeta()->delete($meta);
+                Craft::$app->getElements()->deleteElement($meta);
             }
 
         }

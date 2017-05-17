@@ -14,7 +14,6 @@ use flipbox\spark\services\Element;
 use yii\base\ErrorException as Exception;
 
 /**
- * @package flipbox\meta\services
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

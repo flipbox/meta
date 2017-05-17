@@ -11,7 +11,6 @@ namespace flipbox\meta\migrations;
 use craft\db\Migration;
 
 /**
- * @package flipbox\meta\migrations
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

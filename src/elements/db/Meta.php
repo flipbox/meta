@@ -18,19 +18,16 @@ use craft\models\Site;
 use flipbox\meta\elements\Meta as MetaElement;
 use flipbox\meta\fields\Meta as MetaField;
 use flipbox\meta\helpers\Field as FieldHelper;
-use flipbox\meta\Plugin as MetaPlugin;
+use flipbox\meta\Meta as MetaPlugin;
 use flipbox\meta\records\Meta as MetaRecord;
 use yii\base\Exception;
-use yii\db\Connection;
 
 /**
  * @property string|string[]|Site $ownerSite The handle(s) of the site(s) that the owner element should be in
  *
  * @method MetaElement[]|array all($db = null)
- * @method MetaElement|array|null one($db = null)
- * @method MetaElement|array|null nth(int $n, Connection $db = null)
+ * @method MetaElement|null one($db = null)
  *
- * @package flipbox\meta\elements\db
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

@@ -18,14 +18,13 @@ use craft\records\Field;
 use flipbox\meta\elements\Meta as MetaElement;
 use flipbox\meta\fields\Meta as MetaField;
 use flipbox\meta\helpers\Field as FieldHelper;
+use flipbox\meta\Meta as MetaPlugin;
 use flipbox\meta\migrations\ContentTable;
-use flipbox\meta\Plugin as MetaPlugin;
 use flipbox\meta\records\Meta as MetaRecord;
 use yii\base\Component;
 use yii\base\Exception;
 
 /**
- * @package flipbox\meta\services
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

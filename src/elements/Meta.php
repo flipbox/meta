@@ -19,13 +19,12 @@ use craft\validators\SiteIdValidator;
 use flipbox\meta\elements\db\Meta as MetaQuery;
 use flipbox\meta\fields\Meta as MetaField;
 use flipbox\meta\helpers\Field as FieldHelper;
-use flipbox\meta\Plugin as MetaPlugin;
+use flipbox\meta\Meta as MetaPlugin;
 use flipbox\meta\records\Meta as MetaRecord;
 use flipbox\spark\helpers\ElementHelper;
 use yii\base\Exception;
 
 /**
- * @package flipbox\meta\elements
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */
@@ -69,7 +68,6 @@ class Meta extends Element
 
     /**
      * @inheritdoc
-     *
      * @return MetaQuery
      */
     public static function find(): ElementQueryInterface

@@ -1,12 +1,9 @@
 <?php
+
 /**
- * Meta Plugin for Craft CMS
- *
- * @package   Meta
- * @author    Flipbox Factory
- * @copyright Copyright (c) 2015, Flipbox Digital
- * @link      https://flipboxfactory.com/craft/meta/
- * @license   https://flipboxfactory.com/craft/meta/license
+ * @copyright  Copyright (c) Flipbox Digital Limited
+ * @license    https://flipboxfactory.com/software/meta/license
+ * @link       https://www.flipboxfactory.com/software/meta/
  */
 
 namespace flipbox\meta\web\assets\settings;
@@ -15,7 +12,8 @@ use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
 /**
- * Application asset bundle.
+ * @author Flipbox Factory <hello@flipboxfactory.com>
+ * @since 1.0.0
  */
 class Settings extends AssetBundle
 {

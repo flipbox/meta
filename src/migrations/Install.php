@@ -18,7 +18,6 @@ use flipbox\meta\fields\Meta;
 use flipbox\meta\records\Meta as MetaRecord;
 
 /**
- * @package flipbox\meta\migrations
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

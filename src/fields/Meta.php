@@ -28,13 +28,12 @@ use craft\validators\ArrayValidator;
 use flipbox\meta\elements\db\Meta as MetaQuery;
 use flipbox\meta\elements\Meta as MetaElement;
 use flipbox\meta\helpers\Field as FieldHelper;
-use flipbox\meta\Plugin as MetaPlugin;
+use flipbox\meta\Meta as MetaPlugin;
 use flipbox\meta\records\Meta as MetaRecord;
 use flipbox\meta\web\assets\input\Input as MetaInputAsset;
 use flipbox\meta\web\assets\settings\Settings as MetaSettingsAsset;
 
 /**
- * @package flipbox\meta\fields
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

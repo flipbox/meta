@@ -14,7 +14,8 @@
                             <div class="name{% if field.required %} required{% endif %}">
                                 {%- if field.name and field.name != '__blank__' %}{{ field.name }}{% else %}<em
                                         class="light">{{ '(blank)'|t('app') }}</em>{% endif -%}
-                                &nbsp;</div>
+                                &nbsp;
+                            </div>
                             <div class="handle code">{{ field.handle }}&nbsp;</div>
                             <div class="actions">
                                 <a class="move icon" title="{{ 'Reorder'|t('app') }}" role="button"></a>

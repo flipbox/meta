@@ -11,7 +11,6 @@ namespace flipbox\meta\helpers;
 use flipbox\meta\records\Meta as MetaRecord;
 
 /**
- * @package flipbox\meta\helpers
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

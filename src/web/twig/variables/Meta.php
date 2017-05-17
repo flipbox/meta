@@ -9,10 +9,9 @@
 namespace flipbox\meta\web\twig\variables;
 
 use flipbox\meta\elements\Meta as MetaElement;
-use flipbox\meta\Plugin;
+use flipbox\meta\Meta as MetaPlugin;
 
 /**
- * @package flipbox\meta\web\twig\variables
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */
@@ -27,7 +26,7 @@ class Meta
     {
 
         /** @var MetaElement $element */
-        $element = Plugin::getInstance()->getMeta()->create($criteria);
+        $element = MetaPlugin::getInstance()->getMeta()->create($criteria);
 
         return $element;
 

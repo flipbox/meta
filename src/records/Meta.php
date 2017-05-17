@@ -27,7 +27,6 @@ use yii\db\ActiveQueryInterface;
  * @property Site $ownerSite Site
  * @property Field $field Field
  *
- * @package flipbox\meta\records
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */

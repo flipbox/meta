@@ -1,7 +1,7 @@
 {
 	"name": "flipboxdigital/meta",
 	"description": "A simple, repeatable field type",
-	"version": "1.0.0-beta",
+	"version": "1.0.0-beta.1",
 	"type": "craft-plugin",
 	"keywords": [
 		"flipbox",
@@ -22,7 +22,6 @@
 		"rss": "https://github.com/flipbox/meta/commits/master.atom"
 	},
 	"require": {
-		"craftcms/cms": "~3.0.0-beta.17",
 		"flipboxdigital/spark": "~1.0.0-beta.2"
 	},
 	"require-dev": {
@@ -42,7 +41,7 @@
 	"extra": {
 		"name": "Meta",
 		"handle": "meta",
-		"class": "flipbox\\meta\\Plugin",
+		"class": "flipbox\\meta\\Meta",
 		"changelogUrl": "https://raw.githubusercontent.com/flipbox/meta/master/CHANGELOG.md",
 		"downloadUrl": "https://github.com/flipbox/meta/archive/master.zip",
 		"hasCpSettings": false,

@@ -9,7 +9,7 @@
 namespace flipbox\meta;
 
 use Craft;
-use craft\base\Plugin as BasePlugin;
+use craft\base\Plugin;
 use craft\events\RegisterComponentTypesEvent;
 use craft\records\Field as FieldRecord;
 use craft\services\Elements;
@@ -20,11 +20,10 @@ use flipbox\meta\web\twig\variables\Meta as MetaVariable;
 use yii\base\Event;
 
 /**
- * @package flipbox\meta
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
  */
-class Plugin extends BasePlugin
+class Meta extends Plugin
 {
 
     /**
@@ -89,7 +88,7 @@ class Plugin extends BasePlugin
      *******************************************/
 
     /**
-     * @return object|services\Meta
+     * @return services\Meta
      */
     public function getMeta()
     {
@@ -97,7 +96,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * @return object|services\Field
+     * @return services\Field
      */
     public function getField()
     {
@@ -105,7 +104,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * @return object|services\Configuration
+     * @return services\Configuration
      */
     public function getConfiguration()
     {
