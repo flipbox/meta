@@ -6,46 +6,49 @@
 /* ----------------------------------------*/
 
 /* config */
-.meta-configuration > .field {
-  max-width: none;
-}
+.meta-configuration {
 
-.meta-configuration > .field > .input {
-  position: relative;
-  @include padding-left(200px);
-  overflow: hidden;
-  border: 1px solid #e3e5e8;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
-  -moz-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
-  box-shadow: 0 0 5px rgba(51, 170, 255, 0);
-  -webkit-transition: -webkit-box-shadow linear 100ms;
-  -moz-transition: box-shadow linear 100ms;
-}
+  > .field {
+    max-width: none;
 
-.meta-configuration .mc-sidebar {
-  position: absolute;
-  top: 0;
-  margin: 0;
-  border: none;
-  width: 200px;
-  height: 100%;
-  background: hsla($hue, 8%, 0%, 0.03);
-  @include box-shadow(inset -1px 0 0 rgba(0, 0, 0, 0.06));
+    > .input {
+      position: relative;
+      @include padding-left(200px);
+      overflow: hidden;
+      border: 1px solid #e3e5e8;
+      border-radius: 3px;
+      -webkit-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+      -moz-box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+      box-shadow: 0 0 5px rgba(51, 170, 255, 0);
+      -webkit-transition: -webkit-box-shadow linear 100ms;
+      -moz-transition: box-shadow linear 100ms;
+    }
 
-}
+  }
 
-//.meta-configuration .mc-sidebar.block-types {
-//  @include left(0);
-//}
+  .mc-sidebar {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    border: none;
+    width: 200px;
+    height: 100%;
+    background: hsla($hue, 8%, 0%, 0.03);
+    @include box-shadow(inset -1px 0 0 rgba(0, 0, 0, 0.06));
 
-.meta-configuration .mc-sidebar.fields {
-  @include left(0);
-}
+    &.fields {
+      @include left(0);
+    }
 
-.meta-configuration .mc-sidebar .items {
-  margin-top: -1px;
-  padding-top: 1px;
+    .items {
+      margin-top: -1px;
+      padding-top: 1px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  }
+
 }
 
 .metaconfigitem {
