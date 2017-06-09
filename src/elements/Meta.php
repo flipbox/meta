@@ -30,9 +30,30 @@ use yii\base\Exception;
  */
 class Meta extends Element
 {
+    /**
+     * @var int|null Field ID
+     */
+    public $fieldId;
 
-    // Static
-    // =========================================================================
+    /**
+     * @var int|null Owner ID
+     */
+    public $ownerId;
+
+    /**
+     * @var int|null Owner site ID
+     */
+    public $ownerSiteId;
+
+    /**
+     * @var int|null Sort order
+     */
+    public $sortOrder;
+
+    /**
+     * @var ElementInterface|false|null The owner element, or false if [[ownerId]] is invalid
+     */
+    private $_owner;
 
     /**
      * @inheritdoc
@@ -112,44 +133,11 @@ class Meta extends Element
 
     }
 
-    // Properties
-    // =========================================================================
-
-    /**
-     * @var int|null Field ID
-     */
-    public $fieldId;
-
-    /**
-     * @var int|null Owner ID
-     */
-    public $ownerId;
-
-    /**
-     * @var int|null Owner site ID
-     */
-    public $ownerSiteId;
-
-    /**
-     * @var int|null Sort order
-     */
-    public $sortOrder;
-
-    /**
-     * @var ElementInterface|false|null The owner element, or false if [[ownerId]] is invalid
-     */
-    private $_owner;
-
-
-    // Public Methods
-    // =========================================================================
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
-
         return array_merge(
             parent::rules(),
             [
@@ -177,13 +165,11 @@ class Meta extends Element
                     ],
                     'safe',
                     'on' => [
-                        ElementHelper::SCENARIO_POPULATE,
                         ElementHelper::SCENARIO_DEFAULT
                     ]
                 ]
             ]
         );
-
     }
 
     /**
@@ -199,7 +185,7 @@ class Meta extends Element
      */
     public function getSupportedSites(): array
     {
-        // If the Matrix field is translatable, than each individual block is tied to a single site, and thus aren't
+        // If the field is translatable, than each individual block is tied to a single site, and thus aren't
         // translatable. Otherwise all elements belong to all sites, and their content is translatable.
 
         if ($this->ownerSiteId !== null) {
@@ -280,19 +266,15 @@ class Meta extends Element
      */
     public static function getFieldsForElementsQuery(ElementQueryInterface $query)
     {
-
         if (isset($query->fieldId) and !empty($query->fieldId)) {
-
             // Get the field context
             $fieldContext = FieldHelper::getContextById($query->fieldId);
 
             // Get all fields (based on context);
             return Craft::$app->getFields()->getAllFields($fieldContext);
-
         }
 
         return [];
-
     }
 
     /**
@@ -300,12 +282,10 @@ class Meta extends Element
      */
     public function getHasFreshContent(): bool
     {
-
         // Defer to the owner element
         $owner = $this->getOwner();
 
         return $owner ? $owner->getHasFreshContent() : false;
-
     }
 
     // Events
@@ -317,7 +297,6 @@ class Meta extends Element
      */
     public function afterSave(bool $isNew)
     {
-
         // Get the record
         if (!$isNew) {
             $record = MetaRecord::findOne($this->id);
@@ -337,7 +316,6 @@ class Meta extends Element
         $record->save(false);
 
         parent::afterSave($isNew);
-
     }
 
     // Private Methods
@@ -350,7 +328,6 @@ class Meta extends Element
      */
     private function getField()
     {
-
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         if (!$this->fieldId) {
 
@@ -365,7 +342,5 @@ class Meta extends Element
         }
 
         return Craft::$app->getFields()->getFieldById($this->fieldId);
-
     }
-
 }
