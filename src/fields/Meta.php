@@ -301,7 +301,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function setTemplate($template)
     {
-        if(!$this->templateOverride) {
+        if (!$this->templateOverride) {
             $template = null;
         }
         $this->template = $template;
