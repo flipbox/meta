@@ -31,8 +31,6 @@ class Meta extends Plugin
      */
     public function init()
     {
-
-        // Do parent
         parent::init();
 
         // Register our elements
@@ -52,7 +50,6 @@ class Meta extends Plugin
                 $event->types[] = MetaFieldType::class;
             }
         );
-
     }
 
     /**
@@ -68,7 +65,6 @@ class Meta extends Plugin
      */
     public function beforeUninstall(): bool
     {
-
         // Get field all fields associated to this plugin
         $existingFieldRecords = FieldRecord::findAll([
             'type' => MetaFieldType::class
@@ -80,7 +76,6 @@ class Meta extends Plugin
         }
 
         return true;
-
     }
 
     /*******************************************
@@ -110,5 +105,4 @@ class Meta extends Plugin
     {
         return $this->get('configuration');
     }
-
 }

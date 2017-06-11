@@ -37,12 +37,10 @@ class Meta extends Element
      */
     protected function notFoundException()
     {
-
         throw new Exception(Craft::t(
             'meta',
             'Meta does not exist.'
         ));
-
     }
 
     /**
@@ -51,13 +49,10 @@ class Meta extends Element
      */
     protected function notFoundByIdException(int $id = null)
     {
-
         throw new Exception(Craft::t(
             'meta',
             'Meta does not exist with the id "{id}".',
             ['id' => $id]
         ));
-
     }
-
 }

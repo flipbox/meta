@@ -17,6 +17,9 @@ use flipbox\spark\records\Record;
 use yii\db\ActiveQueryInterface;
 
 /**
+ * @author Flipbox Factory <hello@flipboxfactory.com>
+ * @since 1.0.0
+ *
  * @property int $id ID
  * @property int $ownerId Owner ID
  * @property int $ownerSiteId Owner Site ID
@@ -26,9 +29,6 @@ use yii\db\ActiveQueryInterface;
  * @property Element $owner Owner
  * @property Site $ownerSite Site
  * @property Field $field Field
- *
- * @author Flipbox Factory <hello@flipboxfactory.com>
- * @since 1.0.0
  */
 class Meta extends Record
 {
@@ -107,5 +107,4 @@ class Meta extends Record
     {
         return $this->hasOne(Field::class, ['id' => 'fieldId']);
     }
-
 }

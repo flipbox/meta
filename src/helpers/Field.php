@@ -61,5 +61,4 @@ class Field
     {
         return MetaRecord::tableAlias() . 'content_' . $name;
     }
-
 }

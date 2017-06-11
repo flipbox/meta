@@ -37,12 +37,9 @@ class Configuration extends Component
      */
     public function beforeSave(MetaField $metaField)
     {
-
         if (!$metaField->getIsNew()) {
-
             /** @var Field $fieldRecord */
             if ($oldFieldRecord = Field::findOne($metaField->id)) {
-
                 /** @var MetaField $oldField */
                 $oldField = Craft::$app->getFields()->createField(
                     $oldFieldRecord->toArray([
@@ -58,13 +55,10 @@ class Configuration extends Component
                 if ($oldField->fieldLayoutId) {
                     return Craft::$app->getFields()->deleteLayoutById($oldField->fieldLayoutId);
                 }
-
             }
-
         }
 
         return true;
-
     }
 
     /**
@@ -132,7 +126,7 @@ class Configuration extends Component
                 if ($oldContentTable && Craft::$app->getDb()->tableExists($oldContentTable)) {
                     MigrationHelper::renameTable($oldContentTable, $newContentTable);
                 } else {
-                    $this->_createContentTable($newContentTable);
+                    $this->createContentTable($newContentTable);
                 }
             }
 
@@ -224,7 +218,6 @@ class Configuration extends Component
 
         $transaction = Craft::$app->getDb()->beginTransaction();
         try {
-
             // Delete field layout
             Craft::$app->getFields()->deleteLayoutById($field->fieldLayoutId);
 
@@ -249,15 +242,12 @@ class Configuration extends Component
             $transaction->commit();
 
             return true;
-
         } catch (\Exception $e) {
-
             // Revert
             $transaction->rollback();
 
             throw $e;
         }
-
     }
 
 
@@ -284,14 +274,11 @@ class Configuration extends Component
 
         /** @var Field $field */
         foreach ($metaField->getFields() as $field) {
-
             $field->validate();
-
             if ($field->hasErrors()) {
                 $metaField->hasFieldErrors = true;
                 $validates = false;
             }
-
         }
 
         $contentService->fieldContext = $originalFieldContext;
@@ -303,7 +290,7 @@ class Configuration extends Component
     /**
      * @inheritdoc
      */
-    private function _createContentTable($tableName)
+    private function createContentTable($tableName)
     {
         $migration = new ContentTable([
             'tableName' => $tableName
@@ -314,5 +301,4 @@ class Configuration extends Component
         ob_end_clean();
 
     }
-
 }

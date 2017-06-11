@@ -23,29 +23,36 @@ use flipbox\meta\records\Meta as MetaRecord;
 use yii\base\Exception;
 
 /**
+ * @author Flipbox Factory <hello@flipboxfactory.com>
+ * @since 1.0.0
+ *
  * @property string|string[]|Site $ownerSite The handle(s) of the site(s) that the owner element should be in
  *
  * @method MetaElement[]|array all($db = null)
  * @method MetaElement|null one($db = null)
- *
- * @author Flipbox Factory <hello@flipboxfactory.com>
- * @since 1.0.0
  */
 class Meta extends ElementQuery
 {
 
     /**
-     * @var integer|integer[] The field ID(s) that the resulting Meta must belong to.
+     * The field ID(s) that the resulting Meta must belong to.
+     *
+     * @var integer|integer[]
      */
     public $fieldId;
 
     /**
-     * @var int|int[]|null The owner element ID(s) that the resulting Meta must belong to.
+     * The owner element ID(s) that the resulting Meta must belong to.
+     *
+     * @var int|int[]|null
      */
     public $ownerId;
 
     /**
-     * @var int|string|null The site ID that the resulting Meta must have been defined in, or ':empty:' to find elements without an owner site ID.
+     * The site ID that the resulting Meta must have been defined in, or ':empty:' to find
+     * elements without an owner site ID.
+     *
+     * @var int|string|null
      */
     public $ownerSiteId;
 
@@ -218,11 +225,8 @@ class Meta extends ElementQuery
      */
     protected function customFields(): array
     {
-
         return Craft::$app->getFields()->getAllFields(
             FieldHelper::getContextById($this->fieldId)
         );
-
     }
-
 }

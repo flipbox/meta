@@ -22,6 +22,8 @@ use yii\base\Component;
 /**
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
+ *
+ * @method MetaQuery find()
  */
 class Field extends Component
 {
@@ -92,7 +94,6 @@ class Field extends Component
             }
 
             // Delete any elements that shouldn't be there anymore
-            /** @var MetaQuery $deleteElementsQuery */
             $deleteElementsQuery = MetaElement::find()
                 ->ownerId($owner->getId())
                 ->fieldId($field->id)
@@ -257,7 +258,8 @@ class Field extends Component
                             'targetId',
                             'sortOrder'
                         ],
-                        $rows)
+                        $rows
+                    )
                     ->execute();
             }
         } else {
@@ -293,7 +295,6 @@ class Field extends Component
      */
     public function getContentTableName(MetaField $metaField, $useOldHandle = false)
     {
-
         $name = '';
 
         if ($useOldHandle) {
@@ -309,7 +310,5 @@ class Field extends Component
         $name = StringHelper::toLowerCase($handle) . $name;
 
         return FieldHelper::getContentTableName($name);
-
     }
-
 }

@@ -17,19 +17,15 @@ use flipbox\meta\Meta as MetaPlugin;
  */
 class Meta
 {
-
     /**
      * @param null $criteria
      * @return MetaElement
      */
     public function create($criteria = null)
     {
-
         /** @var MetaElement $element */
         $element = MetaPlugin::getInstance()->getMeta()->create($criteria);
 
         return $element;
-
     }
-
 }

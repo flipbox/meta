@@ -121,27 +121,44 @@ class Install extends InstallMigration
      */
     protected function addForeignKeys()
     {
-
         $this->addForeignKey(
             $this->db->getForeignKeyName(MetaRecord::tableName(), 'id'),
-            MetaRecord::tableName(), 'id', ElementRecord::tableName(), 'id', 'CASCADE', null
+            MetaRecord::tableName(),
+            'id',
+            ElementRecord::tableName(),
+            'id',
+            'CASCADE',
+            null
         );
 
         $this->addForeignKey(
             $this->db->getForeignKeyName(MetaRecord::tableName(), 'ownerId'),
-            MetaRecord::tableName(), 'ownerId', ElementRecord::tableName(), 'id', 'CASCADE', null
+            MetaRecord::tableName(),
+            'ownerId',
+            ElementRecord::tableName(),
+            'id',
+            'CASCADE',
+            null
         );
 
         $this->addForeignKey(
             $this->db->getForeignKeyName(MetaRecord::tableName(), 'ownerSiteId'),
-            MetaRecord::tableName(), 'ownerSiteId', SiteRecord::tableName(), 'id', 'CASCADE', null
+            MetaRecord::tableName(),
+            'ownerSiteId',
+            SiteRecord::tableName(),
+            'id',
+            'CASCADE',
+            null
         );
 
         $this->addForeignKey(
             $this->db->getForeignKeyName(MetaRecord::tableName(), 'fieldId'),
-            MetaRecord::tableName(), 'fieldId', FieldRecord::tableName(), 'id', 'CASCADE', null
+            MetaRecord::tableName(),
+            'fieldId',
+            FieldRecord::tableName(),
+            'id',
+            'CASCADE',
+            null
         );
-
     }
-
 }

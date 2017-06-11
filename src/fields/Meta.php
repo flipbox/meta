@@ -36,10 +36,12 @@ use flipbox\meta\web\assets\settings\Settings as MetaSettingsAsset;
 /**
  * @author Flipbox Factory <hello@flipboxfactory.com>
  * @since 1.0.0
+ *
+ * @method setFieldLayout(FieldLayout $fieldLayout)
+ * @method FieldLayout getFieldLayout()
  */
 class Meta extends Field implements EagerLoadingFieldInterface
 {
-
     /**
      * @inheritdoc
      */
@@ -109,7 +111,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function rules()
     {
-
         return array_merge(
             parent::rules(),
             [
@@ -123,7 +124,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 ]
             ]
         );
-
     }
 
     /**
@@ -131,7 +131,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function validate($attributeNames = null, $clearErrors = true): bool
     {
-
         // Run basic model validation first
         $validates = parent::validate($attributeNames, $clearErrors);
 
@@ -141,7 +140,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         }
 
         return $validates;
-
     }
 
     /**
@@ -149,9 +147,8 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function getSettingsHtml()
     {
-
         // Get the available field types data
-        $fieldTypeInfo = $this->_getFieldOptionsForConfiguration();
+        $fieldTypeInfo = $this->getFieldOptionsForConfiguration();
 
         $view = Craft::$app->getView();
 
@@ -197,7 +194,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 'fieldTypes' => $fieldTypeOptions
             ]
         );
-
     }
 
     /**
@@ -205,7 +201,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-
         /** @var Element $element */
 
         // New element query
@@ -229,11 +224,10 @@ class Meta extends Field implements EagerLoadingFieldInterface
             $query->status = null;
             $query->enabledForSite = false;
             $query->limit = null;
-            $query->setCachedResult($this->_createElementsFromSerializedData($value, $element));
+            $query->setCachedResult($this->createElementsFromSerializedData($value, $element));
         }
 
         return $query;
-
     }
 
     /**
@@ -241,7 +235,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function modifyElementsQuery(ElementQueryInterface $query, $value)
     {
-
         /** @var ElementQuery $query */
         if ($value === 'not :empty:') {
             $value = ':notempty:';
@@ -252,15 +245,17 @@ class Meta extends Field implements EagerLoadingFieldInterface
             $operator = ($value === ':notempty:' ? '!=' : '=');
 
             $query->subQuery->andWhere(
-                "(select count([[{$alias}.id]]) from " . MetaRecord::tableName() . " {{{$alias}}} where [[{$alias}.ownerId]] = [[elements.id]] and [[{$alias}.fieldId]] = :fieldId) {$operator} 0",
+                "(select count([[{$alias}.id]]) from " .
+                MetaRecord::tableName() .
+                " {{{$alias}}} where [[{$alias}.ownerId]] = [[elements.id]]" .
+                " and [[{$alias}.fieldId]] = :fieldId) {$operator} 0",
                 [':fieldId' => $this->id]
             );
-        } else if ($value !== null) {
+        } elseif ($value !== null) {
             return false;
         }
 
         return null;
-
     }
 
     /**
@@ -268,21 +263,22 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function getInputHtml($value, ElementInterface $element = null): string
     {
-
         $id = Craft::$app->getView()->formatInputId($this->handle);
 
         // Get the field data
-        $fieldInfo = $this->_getFieldInfoForInput();
+        $fieldInfo = $this->getFieldInfoForInput();
 
         Craft::$app->getView()->registerAssetBundle(MetaInputAsset::class);
 
-        Craft::$app->getView()->registerJs('new Craft.MetaInput(' .
+        Craft::$app->getView()->registerJs(
+            'new Craft.MetaInput(' .
             '"' . Craft::$app->getView()->namespaceInputId($id) . '", ' .
             Json::encode($fieldInfo, JSON_UNESCAPED_UNICODE) . ', ' .
             '"' . Craft::$app->getView()->namespaceInputName($this->handle) . '", ' .
             ($this->min ?: 'null') . ', ' .
             ($this->max ?: 'null') .
-            ');');
+            ');'
+        );
 
         Craft::$app->getView()->registerTranslations('meta', [
             'Add new',
@@ -307,7 +303,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 'template' => FieldHelper::defaultLayoutTemplate()
             ]
         );
-
     }
 
     /**
@@ -321,8 +316,14 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 ArrayValidator::class,
                 'min' => $this->required ? ($this->min ?: 1) : null,
                 'max' => $this->max ?: null,
-                'tooFew' => Craft::t('app', '{attribute} should contain at least {min, number} {min, plural, one{record} other{records}}.'),
-                'tooMany' => Craft::t('app', '{attribute} should contain at most {max, number} {max, plural, one{record} other{records}}.'),
+                'tooFew' => Craft::t(
+                    'app',
+                    '{attribute} should contain at least {min, number} {min, plural, one{record} other{records}}.'
+                ),
+                'tooMany' => Craft::t(
+                    'app',
+                    '{attribute} should contain at most {max, number} {max, plural, one{record} other{records}}.'
+                ),
             ],
         ];
     }
@@ -360,7 +361,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function getSearchKeywords($value, ElementInterface $element): string
     {
-
         /** @var MetaQuery $value */
 
         $keywords = [];
@@ -368,7 +368,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
         /** @var MetaElement $meta */
         foreach ($value as $meta) {
-
             $originalContentTable = $contentService->contentTable;
             $originalFieldContext = $contentService->fieldContext;
 
@@ -383,11 +382,9 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
             $contentService->contentTable = $originalContentTable;
             $contentService->fieldContext = $originalFieldContext;
-
         }
 
         return parent::getSearchKeywords($keywords, $element);
-
     }
 
     /**
@@ -397,10 +394,8 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function getStaticHtml($value, ElementInterface $element): string
     {
-
         if ($value) {
             $id = StringHelper::randomString();
-
             return Craft::$app->getView()->renderTemplate(
                 FieldHelper::TEMPLATE_PATH . DIRECTORY_SEPARATOR . 'input',
                 [
@@ -410,17 +405,13 @@ class Meta extends Field implements EagerLoadingFieldInterface
                     'static' => true
                 ]
             );
-
         } else {
-
             Craft::$app->getView()->registerTranslations('meta', [
                 'No meta'
             ]);
 
             return '<p class="light">' . Craft::t('meta', 'No meta') . '</p>';
-
         }
-
     }
 
 
@@ -429,7 +420,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function settingsAttributes(): array
     {
-
         return [
             'max',
             'min',
@@ -437,7 +427,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
             'fieldLayoutId',
             'template'
         ];
-
     }
 
 
@@ -471,15 +460,11 @@ class Meta extends Field implements EagerLoadingFieldInterface
         ];
     }
 
-    // Events
-    // -------------------------------------------------------------------------
-
     /**
      * @inheritdoc
      */
     public function beforeSave(bool $isNew): bool
     {
-
         // Save field settings (and field content)
         if (!MetaPlugin::getInstance()->getConfiguration()->beforeSave($this)) {
             return false;
@@ -487,7 +472,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
         // Trigger an 'afterSave' event
         return parent::beforeSave($isNew);
-
     }
 
     /**
@@ -495,13 +479,11 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function afterSave(bool $isNew)
     {
-
         // Save field settings (and field content)
         MetaPlugin::getInstance()->getConfiguration()->afterSave($this);
 
         // Trigger an 'afterSave' event
         parent::afterSave($isNew);
-
     }
 
     /**
@@ -509,13 +491,11 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function beforeDelete(): bool
     {
-
         // Delete field content table
         MetaPlugin::getInstance()->getConfiguration()->beforeDelete($this);
 
         // Trigger a 'beforeDelete' event
         return parent::beforeDelete();
-
     }
 
     /**
@@ -523,13 +503,11 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function afterElementSave(ElementInterface $element, bool $isNew)
     {
-
         // Save meta element
         MetaPlugin::getInstance()->getField()->afterElementSave($this, $element);
 
         // Trigger an 'afterElementSave' event
         parent::afterElementSave($element, $isNew);
-
     }
 
     /**
@@ -537,14 +515,12 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function beforeElementDelete(ElementInterface $element): bool
     {
-
         // Delete meta elements
         if (!MetaPlugin::getInstance()->getField()->beforeElementDelete($this, $element)) {
             return false;
         }
 
         return parent::beforeElementDelete($element);
-
     }
 
     /**
@@ -562,9 +538,8 @@ class Meta extends Field implements EagerLoadingFieldInterface
      *
      * @return array
      */
-    private function _getFieldOptionsForConfiguration()
+    private function getFieldOptionsForConfiguration()
     {
-
         $disallowedFields = [
             self::class,
             Matrix::class
@@ -609,7 +584,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         Craft::$app->getView()->setNamespace($originalNamespace);
 
         return $fieldTypes;
-
     }
 
 
@@ -618,12 +592,14 @@ class Meta extends Field implements EagerLoadingFieldInterface
      *
      * @return array
      */
-    private function _getFieldInfoForInput(): array
+    private function getFieldInfoForInput(): array
     {
-
         // Set a temporary namespace for these
         $originalNamespace = Craft::$app->getView()->getNamespace();
-        $namespace = Craft::$app->getView()->namespaceInputName($this->handle . '[__META__][fields]', $originalNamespace);
+        $namespace = Craft::$app->getView()->namespaceInputName(
+            $this->handle . '[__META__][fields]',
+            $originalNamespace
+        );
         Craft::$app->getView()->setNamespace($namespace);
 
         $fieldLayoutFields = $this->getFields();
@@ -661,7 +637,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         Craft::$app->getView()->setNamespace($originalNamespace);
 
         return $fields;
-
     }
 
     /**
@@ -672,7 +647,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
      *
      * @return MetaElement[]
      */
-    private function _createElementsFromSerializedData($value, ElementInterface $element = null): array
+    private function createElementsFromSerializedData($value, ElementInterface $element = null): array
     {
         /** @var Element $element */
 
@@ -716,7 +691,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         $prevElement = null;
 
         foreach ($value as $metaId => $metaData) {
-
             // Is this new? (Or has it been deleted?)
             if (strpos($metaId, 'new') === 0 || !isset($oldElementsById[$metaId])) {
                 $meta = new MetaElement();
@@ -734,7 +708,10 @@ class Meta extends Field implements EagerLoadingFieldInterface
             $fieldNamespace = $element->getFieldParamNamespace();
 
             if ($fieldNamespace !== null) {
-                $metaFieldNamespace = ($fieldNamespace ? $fieldNamespace . '.' : '') . '.' . $this->handle . '.' . $metaId . '.fields';
+                $metaFieldNamespace = ($fieldNamespace ? $fieldNamespace . '.' : '') .
+                    '.' . $this->handle .
+                    '.' . $metaId .
+                    '.fields';
                 $meta->setFieldParamNamespace($metaFieldNamespace);
             }
 
@@ -758,7 +735,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         }
 
         return $elements;
-
     }
 
     /**
@@ -780,7 +756,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function setFields(array $fields)
     {
-
         $defaultFieldConfig = [
             'type' => null,
             'name' => null,
@@ -816,38 +791,5 @@ class Meta extends Field implements EagerLoadingFieldInterface
         }
 
         $this->getFieldLayout()->setFields($fields);
-
     }
-
-    /**
-     * Returns the owner's field layout.
-     *
-     * @return FieldLayout
-     */
-    public function getFieldLayout(): FieldLayout
-    {
-        return $this->getFieldLayoutBehavior()->getFieldLayout();
-    }
-
-    /**
-     * Sets the owner's field layout.
-     *
-     * @param FieldLayout $fieldLayout
-     *
-     * @return void
-     */
-    public function setFieldLayout(FieldLayout $fieldLayout)
-    {
-        $this->getFieldLayoutBehavior()->setFieldLayout($fieldLayout);
-    }
-
-    /**
-     * @return null|\yii\base\Behavior|FieldLayoutBehavior
-     */
-    private function getFieldLayoutBehavior()
-    {
-        $this->ensureBehaviors();
-        return $this->getBehavior('fieldLayout');
-    }
-
 }

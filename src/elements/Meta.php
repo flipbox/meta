@@ -53,7 +53,7 @@ class Meta extends Element
     /**
      * @var ElementInterface|false|null The owner element, or false if [[ownerId]] is invalid
      */
-    private $_owner;
+    private $owner;
 
     /**
      * @inheritdoc
@@ -101,7 +101,6 @@ class Meta extends Element
      */
     public static function eagerLoadingMap(array $sourceElements, string $handle)
     {
-
         $fieldId = $sourceElements[0]->fieldId;
 
         // Create field context (meta:{id})
@@ -130,7 +129,6 @@ class Meta extends Element
         }
 
         return parent::eagerLoadingMap($sourceElements, $handle);
-
     }
 
     /**
@@ -215,23 +213,23 @@ class Meta extends Element
      */
     public function getOwner()
     {
-        if ($this->_owner !== null) {
-            return $this->_owner !== false ? $this->_owner : null;
+        if ($this->owner !== null) {
+            return $this->owner !== false ? $this->owner : null;
         }
 
         if ($this->ownerId === null) {
             return null;
         }
 
-        if (($this->_owner = Craft::$app->getElements()->getElementById($this->ownerId, null, $this->siteId)) === null) {
+        if (($this->owner = Craft::$app->getElements()->getElementById($this->ownerId, null, $this->siteId)) === null) {
             // Be forgiving of invalid ownerId's in this case, since the field
             // could be in the process of being saved to a new element/site
-            $this->_owner = false;
+            $this->owner = false;
 
             return null;
         }
 
-        return $this->_owner;
+        return $this->owner;
     }
 
     /**
@@ -241,7 +239,7 @@ class Meta extends Element
      */
     public function setOwner(ElementInterface $owner)
     {
-        $this->_owner = $owner;
+        $this->owner = $owner;
     }
 
     /**
