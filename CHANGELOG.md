@@ -1,5 +1,10 @@
 Changelog
 =========
+
+## Unreleased
+### Added
+- Introduced field setting to indicate input template override.
+
 ## [1.0.0-beta.2] - 2017-06-11
 ### Changed
 - General code styling and return types for various methods
