@@ -201,13 +201,17 @@ class Meta extends Field implements EagerLoadingFieldInterface
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-        /** @var Element $element */
+        /** @var Element|null $element */
+
+        if ($value instanceof MetaQuery) {
+            return $value;
+        }
 
         // New element query
         $query = MetaElement::find();
 
         // Existing element?
-        if (!empty($element->id)) {
+        if ($element && $element->id) {
             $query->ownerId($element->id);
         } else {
             $query->id(false);
@@ -224,7 +228,9 @@ class Meta extends Field implements EagerLoadingFieldInterface
             $query->status = null;
             $query->enabledForSite = false;
             $query->limit = null;
-            $query->setCachedResult($this->createElementsFromSerializedData($value, $element));
+            $query->setCachedResult(
+                $this->createElementsFromSerializedData($value, $element)
+            );
         }
 
         return $query;
