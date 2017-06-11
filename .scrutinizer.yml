@@ -1,5 +1,5 @@
 filter:
-    excluded_paths: [tests/*, src/web/assets/*/dist/*]
+    excluded_paths: [tests/*, src/web/assets/input/dist/*, src/web/assets/settings/dist/*]
 checks:
     php:
         code_rating: true
