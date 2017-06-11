@@ -42,6 +42,9 @@ use flipbox\meta\web\assets\settings\Settings as MetaSettingsAsset;
  */
 class Meta extends Field implements EagerLoadingFieldInterface
 {
+
+    const DEFAULT_TEMPLATE = FieldHelper::TEMPLATE_PATH . DIRECTORY_SEPARATOR . 'layout';
+
     /**
      * @inheritdoc
      */
@@ -76,9 +79,14 @@ class Meta extends Field implements EagerLoadingFieldInterface
     public $fieldLayoutId;
 
     /**
+     * @var bool
+     */
+    public $templateOverride = false;
+
+    /**
      * @var string
      */
-    public $template = FieldHelper::TEMPLATE_PATH . DIRECTORY_SEPARATOR . 'layout';
+    protected $template = self::DEFAULT_TEMPLATE;
 
     /**
      * @var bool
@@ -91,6 +99,21 @@ class Meta extends Field implements EagerLoadingFieldInterface
     public static function hasContentColumn(): bool
     {
         return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function settingsAttributes(): array
+    {
+        return [
+            'max',
+            'min',
+            'selectionLabel',
+            'fieldLayoutId',
+            'templateOverride',
+            'template'
+        ];
     }
 
     /**
@@ -265,6 +288,27 @@ class Meta extends Field implements EagerLoadingFieldInterface
     }
 
     /**
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->templateOverride ? $this->template : self::DEFAULT_TEMPLATE;
+    }
+
+    /**
+     * @param $template
+     * @return $this
+     */
+    public function setTemplate($template)
+    {
+        if(!$this->templateOverride) {
+            $template = null;
+        }
+        $this->template = $template;
+        return $this;
+    }
+
+    /**
      * @inheritdoc
      */
     public function getInputHtml($value, ElementInterface $element = null): string
@@ -306,7 +350,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 'field' => $this,
                 'elements' => $value,
                 'static' => false,
-                'template' => FieldHelper::defaultLayoutTemplate()
+                'template' => self::DEFAULT_TEMPLATE
             ]
         );
     }
@@ -419,22 +463,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
             return '<p class="light">' . Craft::t('meta', 'No meta') . '</p>';
         }
     }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function settingsAttributes(): array
-    {
-        return [
-            'max',
-            'min',
-            'selectionLabel',
-            'fieldLayoutId',
-            'template'
-        ];
-    }
-
 
     /**
      * @inheritdoc
@@ -591,7 +619,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
         return $fieldTypes;
     }
-
 
     /**
      * Returns html for all associated field types for the Meta field input.

@@ -23,14 +23,6 @@ class Field
     DIRECTORY_SEPARATOR . 'Meta';
 
     /**
-     * @return string
-     */
-    public static function defaultLayoutTemplate()
-    {
-        return static::TEMPLATE_PATH . DIRECTORY_SEPARATOR . 'layout';
-    }
-
-    /**
      * @param $fieldId
      * @return string
      */

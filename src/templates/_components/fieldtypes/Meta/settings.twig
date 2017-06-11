@@ -162,11 +162,23 @@
     errors: field.getErrors('max')
 }) }}
 
-{{ forms.textField({
-    label: "Template"|t('app'),
-    instructions: "The template path used to render the fields in the CP."|t('app'),
-    id: 'template',
-    name: 'template',
-    value: field.template,
-    errors: field.getErrors('template')
-}) }}
+<a class="fieldtoggle" data-target="advanced">{{ "Advanced"|t('app') }}</a>
+<div id="advanced" class="hidden">
+    {{ forms.lightswitchField({
+        label: "Input Template"|t('app'),
+        name: "templateOverride",
+        on: field.template != field.defaultTemplate,
+        toggle: "template-override"
+    }) }}
+
+    <div id="template-override" class="{% if field.template == field.defaultTemplate %}hidden{% endif %}">
+        {{ forms.textField({
+            label: "Template Path"|t('app'),
+            instructions: "The template path used to render the fields in the CP."|t('app'),
+            id: 'template',
+            name: 'template',
+            value: field.template,
+            errors: field.getErrors('template')
+        }) }}
+    </div>
+</div>
