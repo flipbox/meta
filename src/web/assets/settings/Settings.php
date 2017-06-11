@@ -47,5 +47,4 @@ class Settings extends AssetBundle
     public $depends = [
         CpAsset::class,
     ];
-
 }

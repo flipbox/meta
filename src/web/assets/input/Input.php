@@ -44,5 +44,4 @@ class Input extends AssetBundle
     public $depends = [
         CpAsset::class,
     ];
-
 }

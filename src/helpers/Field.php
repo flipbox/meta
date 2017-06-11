@@ -17,7 +17,10 @@ use flipbox\meta\records\Meta as MetaRecord;
 class Field
 {
 
-    const TEMPLATE_PATH = 'meta' . DIRECTORY_SEPARATOR . '_components' . DIRECTORY_SEPARATOR . 'fieldtypes' . DIRECTORY_SEPARATOR . 'Meta';
+    const TEMPLATE_PATH = 'meta' .
+    DIRECTORY_SEPARATOR . '_components' .
+    DIRECTORY_SEPARATOR . 'fieldtypes' .
+    DIRECTORY_SEPARATOR . 'Meta';
 
     /**
      * @return string
