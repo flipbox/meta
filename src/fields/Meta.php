@@ -46,14 +46,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
     const DEFAULT_TEMPLATE = FieldHelper::TEMPLATE_PATH . DIRECTORY_SEPARATOR . 'layout';
 
     /**
-     * @inheritdoc
-     */
-    public static function displayName(): string
-    {
-        return Craft::t('meta', 'Meta');
-    }
-
-    /**
      * @var int|null
      */
     public $max;
@@ -92,6 +84,25 @@ class Meta extends Field implements EagerLoadingFieldInterface
      * @var bool
      */
     public $hasFieldErrors = false;
+
+    /**
+     * @inheritdoc
+     */
+    public static function displayName(): string
+    {
+        return Craft::t('meta', 'Meta');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function supportedTranslationMethods(): array
+    {
+        // Don't ever automatically propagate values to other sites.
+        return [
+            self::TRANSLATION_METHOD_SITE,
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -285,6 +296,14 @@ class Meta extends Field implements EagerLoadingFieldInterface
         }
 
         return null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultTemplate(): string
+    {
+        return $this->templateOverride ? $this->template : self::DEFAULT_TEMPLATE;
     }
 
     /**
