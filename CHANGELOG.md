@@ -1,9 +1,13 @@
 Changelog
 =========
 
-## Unreleased
+## [1.0.0-beta.3] - 2017-06-12
 ### Added
 - Introduced field setting to indicate input template override.
+
+### Fixed
+- When nested in a matrix block, the field prefix would be incorrect
+- When nested in a matrix block and the field type changed, the settings would not be saved correctly. 
 
 ## [1.0.0-beta.2] - 2017-06-11
 ### Changed
