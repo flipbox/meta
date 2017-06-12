@@ -337,7 +337,7 @@
 
             getParsedFieldTypeHtml: function (html) {
                 if (typeof html == 'string') {
-                    html = html.replace(/__FIELD__/g, this.id);
+                    html = html.replace(/__META_FIELD__/g, this.id);
                 }
                 else {
                     html = '';

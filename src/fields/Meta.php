@@ -309,7 +309,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
     /**
      * @return string
      */
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return $this->templateOverride ? $this->template : self::DEFAULT_TEMPLATE;
     }
@@ -602,7 +602,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
         // Set a temporary namespace for these
         $originalNamespace = Craft::$app->getView()->getNamespace();
-        $namespace = Craft::$app->getView()->namespaceInputName('fields[__FIELD__][settings]', $originalNamespace);
+        $namespace = Craft::$app->getView()->namespaceInputName('fields[__META_FIELD__][settings]', $originalNamespace);
         Craft::$app->getView()->setNamespace($namespace);
 
         /** @var Field|string $class */

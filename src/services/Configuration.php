@@ -52,7 +52,7 @@ class Configuration extends Component
                 );
 
                 // Delete the old field layout
-                if ($oldField->fieldLayoutId) {
+                if ($oldField instanceof MetaField) {
                     return Craft::$app->getFields()->deleteLayoutById($oldField->fieldLayoutId);
                 }
             }
