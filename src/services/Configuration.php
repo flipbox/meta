@@ -40,7 +40,7 @@ class Configuration extends Component
         if (!$metaField->getIsNew()) {
             /** @var Field $fieldRecord */
             if ($oldFieldRecord = Field::findOne($metaField->id)) {
-                /** @var MetaField $oldField */
+                /** @var Field $oldField */
                 $oldField = Craft::$app->getFields()->createField(
                     $oldFieldRecord->toArray([
                         'id',
@@ -94,9 +94,13 @@ class Configuration extends Component
             // Get the originals
             $originalContentTable = $contentService->contentTable;
             $originalFieldContext = $contentService->fieldContext;
+            $originalFieldPrefix = $contentService->fieldColumnPrefix;
+            $originalOldFieldPrefix = $fieldsService->oldFieldColumnPrefix;
 
             // Set our content table
             $contentService->contentTable = $oldContentTable;
+            $contentService->fieldColumnPrefix = 'field_';
+            $fieldsService->oldFieldColumnPrefix = 'field_';
 
             // Set our field context
             $contentService->fieldContext = FieldHelper::getContextById($metaField->id);
@@ -128,6 +132,7 @@ class Configuration extends Component
                 } else {
                     $this->createContentTable($newContentTable);
                 }
+                Craft::$app->getDb()->getSchema()->refresh();
             }
 
             // Save the fields and field layout
@@ -138,6 +143,7 @@ class Configuration extends Component
 
             // Set our content table
             $contentService->contentTable = $newContentTable;
+
             // Save field
             /** @var \craft\base\Field $field */
             foreach ($metaField->getFields() as $field) {
@@ -157,6 +163,8 @@ class Configuration extends Component
             // Revert to originals
             $contentService->contentTable = $originalContentTable;
             $contentService->fieldContext = $originalFieldContext;
+            $contentService->fieldColumnPrefix = $originalFieldPrefix;
+            $fieldsService->oldFieldColumnPrefix = $originalOldFieldPrefix;
 
             $fieldLayoutTab = new FieldLayoutTab();
             $fieldLayoutTab->name = 'Fields';
