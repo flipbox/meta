@@ -31,7 +31,6 @@
             $nameHiddenInput: null,
             $handleHiddenInput: null,
             $fieldItemsContainer: null,
-            $fieldSettingsContainer: null,
 
             fields: null,
             selectedField: null,
@@ -57,8 +56,6 @@
                 this.setContainerHeight();
 
                 this.$newFieldBtn = this.$fieldItemsOuterContainer.children('.btn');
-
-                this.$fieldSettingsContainer = this.$fieldSettingItemsContainer.children('.items');
 
                 this.fields = {};
 
@@ -94,7 +91,7 @@
                                 id = $item.data('id'),
                                 field = this.fields[id];
 
-                            field.$fieldSettingsContainer.appendTo(this.$fieldSettingsContainer);
+                            field.$fieldSettingsContainer.appendTo(this.$fieldSettingItemsContainer);
                         }
                     }, this)
                 });

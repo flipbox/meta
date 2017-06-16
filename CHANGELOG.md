@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## Unreleased
+### Fixed
+- Sort order not persisting after field save [#1](https://github.com/flipbox/meta/issues/1)
+
 ## [1.0.0-beta.3] - 2017-06-12
 ### Added
 - Introduced field setting to indicate input template override.
