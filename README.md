@@ -1,5 +1,5 @@
 # Meta Field Type for Craft CMS
-[![Latest Version](https://img.shields.io/github/release/flipbox/link.svg?style=flat-square)](https://github.com/flipbox/meta/releases)
+[![Latest Version](https://img.shields.io/github/release/flipbox/meta.svg?style=flat-square)](https://github.com/flipbox/meta/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/flipbox/meta/master.svg?style=flat-square)](https://travis-ci.org/flipbox/meta)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/flipbox/meta.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipbox/meta/code-structure)
