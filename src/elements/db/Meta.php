@@ -167,7 +167,7 @@ class Meta extends ElementQuery
     {
         /** @var Element $owner */
         $this->ownerId = $owner->id;
-        $this->ownerSiteId = $owner->siteId;
+        $this->siteId = $owner->siteId;
 
         return $this;
     }
