@@ -1,5 +1,8 @@
 Changelog
 =========
+## 1.0.0-beta.5 - 2017-7-19
+### Changed
+- Content tables use the field Id instead of the field handle to add flexibility and eliminate duplicates.
 
 ## 1.0.0-beta.4 - 2017-7-13
 ### Fixed
