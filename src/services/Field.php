@@ -283,32 +283,14 @@ class Field extends Component
         }
     }
 
-
     /**
      * Returns the content table name for a given Meta field.
      *
-     * @param MetaField $metaField The Meta field.
-     * @param bool $useOldHandle Whether the method should use the field’s old handle when determining the table
-     *                                  name (e.g. to get the existing table name, rather than the new one).
-     *
-     * @return string|false The table name, or `false` if $useOldHandle was set to `true` and there was no old handle.
+     * @param MetaField $metaField
+     * @return string
      */
-    public function getContentTableName(MetaField $metaField, $useOldHandle = false)
+    public function getContentTableName(MetaField $metaField): string
     {
-        $name = '';
-
-        if ($useOldHandle) {
-            if (!$metaField->oldHandle) {
-                return false;
-            }
-
-            $handle = $metaField->oldHandle;
-        } else {
-            $handle = $metaField->handle;
-        }
-
-        $name = StringHelper::toLowerCase($handle) . $name;
-
-        return FieldHelper::getContentTableName($name);
+        return FieldHelper::getContentTableName($metaField->id);
     }
 }

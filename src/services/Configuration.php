@@ -85,11 +85,7 @@ class Configuration extends Component
             $metaFieldService = MetaPlugin::getInstance()->getField();
 
             // Create the content table first since the element fields will need it
-            $oldContentTable = $metaFieldService->getContentTableName($metaField, true);
-            $newContentTable = $metaFieldService->getContentTableName($metaField);
-            if ($newContentTable === false) {
-                throw new Exception('There was a problem getting the new content table name.');
-            }
+            $contentTable = $metaFieldService->getContentTableName($metaField);
 
             // Get the originals
             $originalContentTable = $contentService->contentTable;
@@ -98,7 +94,7 @@ class Configuration extends Component
             $originalOldFieldPrefix = $fieldsService->oldFieldColumnPrefix;
 
             // Set our content table
-            $contentService->contentTable = $oldContentTable;
+            $contentService->contentTable = $contentTable;
             $contentService->fieldColumnPrefix = 'field_';
             $fieldsService->oldFieldColumnPrefix = 'field_';
 
@@ -126,12 +122,8 @@ class Configuration extends Component
             Craft::$app->getDb()->getSchema()->refresh();
 
             // Do we need to create/rename the content table?
-            if (!Craft::$app->getDb()->tableExists($newContentTable)) {
-                if ($oldContentTable && Craft::$app->getDb()->tableExists($oldContentTable)) {
-                    MigrationHelper::renameTable($oldContentTable, $newContentTable);
-                } else {
-                    $this->createContentTable($newContentTable);
-                }
+            if (!Craft::$app->getDb()->tableExists($contentTable)) {
+                $this->createContentTable($contentTable);
                 Craft::$app->getDb()->getSchema()->refresh();
             }
 
@@ -142,7 +134,7 @@ class Configuration extends Component
             $sortOrder = 0;
 
             // Set our content table
-            $contentService->contentTable = $newContentTable;
+            $contentService->contentTable = $contentTable;
 
             // Save field
             /** @var \craft\base\Field $field */

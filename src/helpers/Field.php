@@ -40,20 +40,20 @@ class Field
     }
 
     /**
-     * @param $name
+     * @param int $id
      * @return string
      */
-    public static function getContentTableName($name)
+    public static function getContentTableName(int $id)
     {
-        return '{{%' . static::getContentTableRef($name) . '}}';
+        return '{{%' . static::getContentTableRef($id) . '}}';
     }
 
     /**
-     * @param $name
+     * @param int $id
      * @return string
      */
-    public static function getContentTableRef($name)
+    public static function getContentTableRef(int $id)
     {
-        return MetaRecord::tableAlias() . 'content_' . $name;
+        return MetaRecord::tableAlias() . 'content_' . $id;
     }
 }
