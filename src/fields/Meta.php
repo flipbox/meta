@@ -383,12 +383,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
             'validateMeta',
             [
                 ArrayValidator::class,
-                'min' => $this->required ? ($this->min ?: 1) : null,
                 'max' => $this->max ?: null,
-                'tooFew' => Craft::t(
-                    'app',
-                    '{attribute} should contain at least {min, number} {min, plural, one{record} other{records}}.'
-                ),
                 'tooMany' => Craft::t(
                     'app',
                     '{attribute} should contain at most {max, number} {max, plural, one{record} other{records}}.'
