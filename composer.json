@@ -48,7 +48,7 @@
 		"downloadUrl": "https://github.com/flipbox/meta/archive/master.zip",
 		"hasCpSettings": false,
 		"hasCpSection": false,
-		"schemaVersion": "1.0.0",
+		"schemaVersion": "1.1.0",
 		"components": {
 			"meta": "flipbox\\meta\\services\\Meta",
 			"field": "flipbox\\meta\\services\\Field",
