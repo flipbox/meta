@@ -63,7 +63,6 @@ class ContentTable extends Migration
             'CASCADE',
             'CASCADE'
         );
-
     }
 
     /**

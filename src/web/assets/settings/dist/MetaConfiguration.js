@@ -78,7 +78,6 @@
                     if (i == 0 && !this.selectedField) {
                         this.fields[id].select();
                     }
-
                 }
 
                 this.fieldSort = new Garnish.DragSort($fieldItems, {
@@ -163,7 +162,8 @@
                 this.fieldSort.addItems($item);
             }
 
-        });
+        }
+    );
 
     var Field = Garnish.Base.extend(
         {
@@ -220,8 +220,7 @@
 
                 if (isNew) {
                     this.setFieldType('craft\\fields\\PlainText');
-                }
-                else {
+                } else {
                     this.selectedFieldType = this.$typeSelect.val();
                     this.initializedFieldTypeSettings[this.selectedFieldType] = this.$typeSettingsContainer.children();
                 }
@@ -279,8 +278,7 @@
             updateRequiredIcon: function () {
                 if (this.$requiredCheckbox.prop('checked')) {
                     this.$nameLabel.addClass('required');
-                }
-                else {
+                } else {
                     this.$nameLabel.removeClass('required');
                 }
             },
@@ -316,8 +314,7 @@
                     $body = $('<div>' + bodyHtml + '</div>');
 
                     this.initializedFieldTypeSettings[type] = $body;
-                }
-                else {
+                } else {
                     $body = this.initializedFieldTypeSettings[type];
                 }
 
@@ -335,8 +332,7 @@
             getParsedFieldTypeHtml: function (html) {
                 if (typeof html == 'string') {
                     html = html.replace(/__META_FIELD__/g, this.id);
-                }
-                else {
+                } else {
                     html = '';
                 }
 
@@ -457,5 +453,6 @@
                 delete this.configuration.fields[this.id];
             }
 
-        });
+        }
+    );
 })(jQuery);

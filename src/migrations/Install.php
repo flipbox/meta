@@ -58,7 +58,6 @@ class Install extends InstallMigration
         $this->dropTableIfExists(MetaRecord::tableName());
 
         return true;
-
     }
 
     /**
@@ -80,7 +79,6 @@ class Install extends InstallMigration
             'uid' => $this->uid(),
             'PRIMARY KEY(id)',
         ]);
-
     }
 
     /**
@@ -111,7 +109,6 @@ class Install extends InstallMigration
             'fieldId',
             false
         );
-
     }
 
     /**

@@ -49,11 +49,9 @@ class Field extends Component
             foreach ($query->all() as $meta) {
                 Craft::$app->getElements()->deleteElement($meta);
             }
-
         }
 
         return true;
-
     }
 
     /**
@@ -73,7 +71,6 @@ class Field extends Component
 
         $transaction = Craft::$app->getDb()->beginTransaction();
         try {
-
             // Do localization
             $this->applyFieldLocalizationSetting($owner, $field, $query);
 
@@ -81,7 +78,6 @@ class Field extends Component
 
             /** @var Meta $element */
             foreach ($query->all() as $meta) {
-
                 // Set owner based attributes
                 $meta->ownerId = $owner->id;
                 $meta->ownerSiteId = ($field->localize ? $owner->siteId : null);
@@ -90,7 +86,6 @@ class Field extends Component
                 Craft::$app->getElements()->saveElement($meta, false);
 
                 $metaIds[] = $meta->id;
-
             }
 
             // Delete any elements that shouldn't be there anymore
@@ -111,18 +106,14 @@ class Field extends Component
 
             // Success
             $transaction->commit();
-
         } catch (\Exception $e) {
-
             // Revert
             $transaction->rollback();
 
             throw $e;
-
         }
 
         return true;
-
     }
 
     /**
@@ -275,11 +266,8 @@ class Field extends Component
 
                     Craft::$app->getElements()->deleteElement($elementInOtherSite);
                     $deletedElementIds[] = $elementInOtherSite->id;
-
                 }
-
             }
-
         }
     }
 

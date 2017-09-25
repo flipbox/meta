@@ -33,7 +33,6 @@ class Settings extends AssetBundle
         ];
 
         parent::init();
-
     }
 
     /**

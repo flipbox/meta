@@ -602,7 +602,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
 
         /** @var Field|string $class */
         foreach (Craft::$app->getFields()->getAllFieldTypes() as $class) {
-
             // Ignore disallowed fields
             if (in_array($class, $disallowedFields)) {
                 continue;
@@ -626,7 +625,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
                 'settingsBodyHtml' => $settingsBodyHtml,
                 'settingsFootHtml' => $settingsFootHtml,
             ];
-
         }
 
         Craft::$app->getView()->setNamespace($originalNamespace);
@@ -815,7 +813,6 @@ class Meta extends Field implements EagerLoadingFieldInterface
         ];
 
         foreach ($fields as $fieldId => $fieldConfig) {
-
             if (!$fieldConfig instanceof FieldInterface) {
 
                 /** @noinspection SlowArrayOperationsInLoopInspection */
@@ -832,9 +829,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
                     'translationKeyFormat' => $fieldConfig['translationKeyFormat'],
                     'settings' => $fieldConfig['settings'],
                 ]);
-
             }
-
         }
 
         $this->getFieldLayout()->setFields($fields);

@@ -45,18 +45,17 @@
                         // Only return all the selected items if the target item is selected
                         if (this.elementSort.$targetItem.hasClass('sel')) {
                             return this.elementSelect.getSelectedItems();
-                        }
-                        else {
+                        } else {
                             return this.elementSort.$targetItem;
                         }
                     }, this),
-                    collapseDraggees: true,
-                    magnetStrength: 4,
-                    helperLagBase: 1.5,
-                    helperOpacity: 0.9,
-                    onSortChange: $.proxy(function () {
-                        this.elementSelect.resetItemOrder();
-                    }, this)
+                collapseDraggees: true,
+                magnetStrength: 4,
+                helperLagBase: 1.5,
+                helperOpacity: 0.9,
+                onSortChange: $.proxy(function () {
+                    this.elementSelect.resetItemOrder();
+                }, this)
                 });
 
                 this.elementSelect = new Garnish.Select(this.$elementContainer, $elements, {
@@ -108,8 +107,7 @@
                             element.$actionMenu.find('a[data-action=add]').parent().removeClass('disabled');
                         }
                     }
-                }
-                else {
+                } else {
                     // this.$addElementBtnGroup.addClass('disabled');
                     this.$addElementMenuBtn.addClass('disabled');
 
@@ -167,8 +165,7 @@
 
                 if ($insertBefore) {
                     $element.insertBefore($insertBefore);
-                }
-                else {
+                } else {
                     $element.appendTo(this.$elementContainer);
                 }
 
@@ -234,8 +231,7 @@
             getParsedElementHtml: function (html, id) {
                 if (typeof html == 'string') {
                     return html.replace(/__META__/g, id);
-                }
-                else {
+                } else {
                     return '';
                 }
             }
@@ -246,8 +242,7 @@
             getCollapsedElementIds: function () {
                 if (typeof localStorage[Craft.MetaInput.collapsedElementStorageKey] == 'string') {
                     return Craft.filterArray(localStorage[Craft.MetaInput.collapsedElementStorageKey].split(','));
-                }
-                else {
+                } else {
                     return [];
                 }
             },
@@ -278,7 +273,8 @@
                     }
                 }
             }
-        });
+        }
+    );
 
 
     var Meta = Garnish.Base.extend(
@@ -331,8 +327,7 @@
             toggle: function () {
                 if (this.collapsed) {
                     this.expand();
-                }
-                else {
+                } else {
                     this.collapse(true);
                 }
             },
@@ -367,8 +362,7 @@
                             }
 
                             value = $input.text();
-                        }
-                        else {
+                        } else {
                             value = Craft.getText(Garnish.getInputPostVal($input));
                         }
 
@@ -402,8 +396,7 @@
                 if (animate) {
                     this.$fieldsContainer.velocity('fadeOut', {duration: 'fast'});
                     this.$container.velocity({height: 16}, 'fast');
-                }
-                else {
+                } else {
                     this.$previewContainer.show();
                     this.$fieldsContainer.hide();
                     this.$container.css({height: 16});
@@ -417,12 +410,10 @@
                 // Remember that?
                 if (!this.isNew) {
                     Craft.MetaInput.rememberCollapsedElementId(this.id);
-                }
-                else {
+                } else {
                     if (!this.$collapsedInput) {
                         this.$collapsedInput = $('<input type="hidden" name="' + this.meta.inputNamePrefix + '[' + this.id + '][collapsed]" value="1"/>').appendTo(this.$container);
-                    }
-                    else {
+                    } else {
                         this.$collapsedInput.val('1');
                     }
                 }
@@ -469,8 +460,7 @@
 
                 if (!this.isNew) {
                     Craft.MetaInput.forgetCollapsedElementId(this.id);
-                }
-                else if (this.$collapsedInput) {
+                } else if (this.$collapsedInput) {
                     this.$collapsedInput.val('');
                 }
 
@@ -507,8 +497,7 @@
                     case 'collapse': {
                         if (batchAction) {
                             this.meta.collapseSelectedElements();
-                        }
-                        else {
+                        } else {
                             this.collapse(true);
                         }
 
@@ -518,8 +507,7 @@
                     case 'expand': {
                         if (batchAction) {
                             this.meta.expandSelectedElements();
-                        }
-                        else {
+                        } else {
                             this.expand();
                         }
 
@@ -529,8 +517,7 @@
                     case 'disable': {
                         if (batchAction) {
                             this.meta.disableSelectedElements();
-                        }
-                        else {
+                        } else {
                             this.disable();
                         }
 
@@ -540,8 +527,7 @@
                     case 'enable': {
                         if (batchAction) {
                             this.meta.enableSelectedElements();
-                        }
-                        else {
+                        } else {
                             this.enable();
                             this.expand();
                         }
@@ -560,8 +546,7 @@
                             if (confirm(Craft.t('app', 'Are you sure you want to delete the selected elements?'))) {
                                 this.meta.deleteSelectedElements();
                             }
-                        }
-                        else {
+                        } else {
                             this.selfDestruct();
                         }
 
@@ -576,5 +561,6 @@
                     this.meta.updateAddElementBtn();
                 }, this));
             }
-        });
+        }
+    );
 })(jQuery);

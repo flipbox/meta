@@ -114,7 +114,6 @@ class Meta extends Element
 
         // Does field exist?
         if (ArrayHelper::keyExists($handle, $fields)) {
-
             $contentService = Craft::$app->getContent();
 
             $originalFieldContext = $contentService->fieldContext;
@@ -125,7 +124,6 @@ class Meta extends Element
             $contentService->fieldContext = $originalFieldContext;
 
             return $map;
-
         }
 
         return parent::eagerLoadingMap($sourceElements, $handle);
@@ -336,7 +334,6 @@ class Meta extends Element
             $fallbackField = $missingField->createFallback(MetaField::class);
 
             return $fallbackField;
-
         }
 
         return Craft::$app->getFields()->getFieldById($this->fieldId);

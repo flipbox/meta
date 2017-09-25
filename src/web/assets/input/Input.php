@@ -30,7 +30,6 @@ class Input extends AssetBundle
         ];
 
         parent::init();
-
     }
 
     /**

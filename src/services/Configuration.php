@@ -139,7 +139,6 @@ class Configuration extends Component
             // Save field
             /** @var \craft\base\Field $field */
             foreach ($metaField->getFields() as $field) {
-
                 // Save field (we validated earlier)
                 if (!$fieldsService->saveField($field, false)) {
                     throw new Exception('An error occurred while saving this Meta field.');
@@ -149,7 +148,6 @@ class Configuration extends Component
                 $field->sortOrder = ++$sortOrder;
 
                 $fieldLayoutFields[] = $field;
-
             }
 
             // Revert to originals
@@ -180,20 +178,14 @@ class Configuration extends Component
             $fieldRecord->settings = $metaField->getSettings();
 
             if ($fieldRecord->save(true, ['settings'])) {
-
                 // Commit field changes
                 $transaction->commit();
 
                 return true;
-
             } else {
-
                 $metaField->addError('settings', Craft::t('meta', 'Unable to save settings.'));
-
             }
-
         } catch (\Exception $e) {
-
             $transaction->rollback();
 
             throw $e;
@@ -202,7 +194,6 @@ class Configuration extends Component
         $transaction->rollback();
 
         return false;
-
     }
 
     /**
@@ -284,7 +275,6 @@ class Configuration extends Component
         $contentService->fieldContext = $originalFieldContext;
 
         return $validates;
-
     }
 
     /**
@@ -299,6 +289,5 @@ class Configuration extends Component
         ob_start();
         $migration->up();
         ob_end_clean();
-
     }
 }
