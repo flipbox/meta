@@ -46,7 +46,7 @@ class Field extends Component
             $query->owner($element);
 
             /** @var MetaElement $meta */
-            foreach ($query as $meta) {
+            foreach ($query->all() as $meta) {
                 Craft::$app->getElements()->deleteElement($meta);
             }
 
@@ -80,7 +80,7 @@ class Field extends Component
             $metaIds = [];
 
             /** @var Meta $element */
-            foreach ($query as $meta) {
+            foreach ($query->all() as $meta) {
 
                 // Set owner based attributes
                 $meta->ownerId = $owner->id;
@@ -105,7 +105,7 @@ class Field extends Component
                 $deleteElementsQuery->siteId = $owner->siteId;
             }
 
-            foreach ($deleteElementsQuery as $deleteElement) {
+            foreach ($deleteElementsQuery->all() as $deleteElement) {
                 Craft::$app->getElements()->deleteElement($deleteElement);
             }
 
@@ -142,7 +142,7 @@ class Field extends Component
         // Does it look like any work is needed here?
         $applyNewLocalizationSetting = false;
 
-        foreach ($query as $meta) {
+        foreach ($query->all() as $meta) {
             if ($meta->id && (
                     ($field->localize && !$meta->ownerSiteId) ||
                     (!$field->localize && $meta->ownerSiteId)

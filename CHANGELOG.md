@@ -1,5 +1,11 @@
 Changelog
 =========
+
+## Unreleased
+### Changed
+- Registering twig variables using latest Craft event.
+- Explicitly calling `->all()` on Query objects
+
 ## 1.0.0-beta.6 - 2017-7-20
 ### Added
 - Content migration for `1.0.0-beta.5` release

@@ -14,6 +14,7 @@ use craft\events\RegisterComponentTypesEvent;
 use craft\records\Field as FieldRecord;
 use craft\services\Elements;
 use craft\services\Fields;
+use craft\web\twig\variables\CraftVariable;
 use flipbox\meta\elements\Meta as MetaElement;
 use flipbox\meta\fields\Meta as MetaFieldType;
 use flipbox\meta\web\twig\variables\Meta as MetaVariable;
@@ -50,14 +51,17 @@ class Meta extends Plugin
                 $event->types[] = MetaFieldType::class;
             }
         );
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function defineTemplateComponent()
-    {
-        return MetaVariable::class;
+        // Twig variables
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function(Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('meta', MetaVariable::class);
+            }
+        );
     }
 
     /**

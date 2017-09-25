@@ -406,7 +406,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
         $value = $element->getFieldValue($this->handle);
         $validate = true;
 
-        foreach ($value as $meta) {
+        foreach ($value->all() as $meta) {
             /** @var MetaElement $meta */
             if (!$meta->validate()) {
                 $validate = false;
@@ -431,7 +431,7 @@ class Meta extends Field implements EagerLoadingFieldInterface
         $contentService = Craft::$app->getContent();
 
         /** @var MetaElement $meta */
-        foreach ($value as $meta) {
+        foreach ($value->all() as $meta) {
             $originalContentTable = $contentService->contentTable;
             $originalFieldContext = $contentService->fieldContext;
 
