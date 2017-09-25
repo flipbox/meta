@@ -1,20 +1,20 @@
 Changelog
 =========
 
-## Unreleased
+## 1.0.0-beta.7 - 2017-09-25
 ### Changed
 - Registering twig variables using latest Craft event.
 - Explicitly calling `->all()` on Query objects
 
-## 1.0.0-beta.6 - 2017-7-20
+## 1.0.0-beta.6 - 2017-07-20
 ### Added
 - Content migration for `1.0.0-beta.5` release
 
-## 1.0.0-beta.5 - 2017-7-19
+## 1.0.0-beta.5 - 2017-07-19
 ### Changed
 - Content tables use the field Id instead of the field handle to add flexibility and eliminate duplicates.
 
-## 1.0.0-beta.4 - 2017-7-13
+## 1.0.0-beta.4 - 2017-07-13
 ### Fixed
 - Sort order not persisting after field save [#1](https://github.com/flipbox/meta/issues/1)
 - the `siteId` property was not getting set properly when deleting an element.
