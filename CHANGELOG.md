@@ -1,5 +1,8 @@
 Changelog
 =========
+## 1.0.0-beta.8 - 2017-09-29
+### Changed
+- Meta elements now have status and conform to enabled/disabled query.
 
 ## 1.0.0-beta.7 - 2017-09-25
 ### Changed

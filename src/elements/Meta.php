@@ -74,6 +74,14 @@ class Meta extends Element
     /**
      * @inheritdoc
      */
+    public static function hasStatuses(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public static function hasContent(): bool
     {
         return true;
